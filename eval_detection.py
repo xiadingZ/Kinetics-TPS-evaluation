@@ -172,7 +172,7 @@ def eval_human_TPS(gt_human, pred_human_info, human_iou, max_human_iou, max_part
         if part_name in pred_human_info['parts'] and human_iou >= max_human_iou:
             pred_part_verbs = pred_human_info['parts'][part_name]['verb']
             pred_part_boxs = pred_human_info['parts'][part_name]['box']
-
+            assert len(pred_part_verbs) <= 5, print('can only predict 5  proposals on each part!')
             #pred_part_verbs = [pred_part_verbs]
             #pred_part_boxs = [pred_part_boxs]
 
@@ -210,7 +210,7 @@ def eval_video_TPS(vid, gt_part_result, pred_part_result, max_human_iou=0.5, max
 
         pred_humans = pred_part_result[vid][frame]['humans']
         match_human_info = match_humans(gt_humans, pred_humans, max_human_iou)
-
+        assert len(pred_humans) <= 10, print('can only predict 10 human proposals on each frame!')
         for i in range(len(gt_humans)): # i 存疑
             gt_human = gt_humans[i]
             frame_part_counts += len(gt_human['parts'])
