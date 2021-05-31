@@ -211,7 +211,7 @@ def eval_video_TPS(vid, gt_part_result, pred_part_result, max_human_iou=0.5, max
         pred_humans = pred_part_result[vid][frame]['humans']
         match_human_info = match_humans(gt_humans, pred_humans, max_human_iou)
         assert len(pred_humans) <= 10, print('can only predict 10 human proposals on each frame!')
-        for i in range(len(gt_humans)): # i 存疑
+        for i in range(len(gt_humans)): 
             gt_human = gt_humans[i]
             frame_part_counts += len(gt_human['parts'])
             human_part_acc_sum = 0
