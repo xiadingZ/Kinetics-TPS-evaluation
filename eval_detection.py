@@ -139,7 +139,7 @@ def match_humans(gt_humans, pred_humans, IOU_THRESH=0.5):
     idx_gt, idx_pred, ious, valid = match_bboxes(gt_boxes, pred_boxes, IOU_THRESH)
     match_info = {}
     for i in range(len(idx_gt)):
-        match_info[idx_gt[i]] = [idx_pred[i], ious[i], pred_humans[i]]
+        match_info[idx_gt[i]] = [idx_pred[i], ious[i], pred_humans[idx_pred[i]]]  # idx_pred, iou, pre_human_info
     #print(match_info)
     return match_info
 
